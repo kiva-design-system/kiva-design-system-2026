@@ -4,6 +4,10 @@ The canonical token reference for the Kiva product platform.
 
 A single-file, self-contained reference for typography, colors, spacing, layout grid, radius, elevation, border, and buttons. Built to serve both human designers and AI agents working on Kiva product surfaces.
 
+## Live reference
+
+[**kiva-design-system.github.io/kiva-design-system-2026**](https://kiva-design-system.github.io/kiva-design-system-2026/)
+
 ## Source of truth
 
 All values are resolved from:
@@ -38,6 +42,10 @@ The reference is rendered in the two Kiva typefaces:
 - **Kiva Post Grotesk** (`fonts/KivaPostGrot-*.otf` — 8 weight/style files: Light, Light Italic, Book, Book Italic, Medium, Medium Italic, Bold, Bold Italic). Used for Subheadline, Title, Base, Button, Label, Caption, Upper, Small.
 
 These typefaces are part of the Kiva visual identity and are subject to their own licensing terms. Use outside this reference requires permission from the editorial authority listed above.
+
+## Contributing
+
+See `CONTRIBUTING.md` for the change-approval process and PR review rules.
 
 ## License
 
