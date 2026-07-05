@@ -2,7 +2,20 @@
 
 The canonical token reference for the Kiva product platform.
 
-A single-file, self-contained reference for typography, colors, spacing, layout grid, radius, elevation, border, and buttons. Built to serve both human designers and AI agents working on Kiva product surfaces.
+A single-file, self-contained reference for typography, colors, spacing, layout grid, radius, elevation, border, buttons, and the Mapped component layer (forms, tooltip, chips and pills, loading, carousel, lightbox, navigation and footer, avatar). Built to serve both human designers and AI agents working on Kiva product surfaces.
+
+## Machine endpoints (for AI tools and build pipelines)
+
+One source of truth, three renditions. Point AI tools at these URLs instead of the HTML:
+
+| Endpoint | What it is |
+|---|---|
+| [`llms.txt`](https://kiva-design-system.github.io/kiva-design-system-2026/llms.txt) | Index + core rules — the entry point for agents (llmstxt.org convention) |
+| [`llms-full.txt`](https://kiva-design-system.github.io/kiva-design-system-2026/llms-full.txt) | Complete flat markdown: rules, component specifications, full token tables |
+| [`tokens.json`](https://kiva-design-system.github.io/kiva-design-system-2026/tokens.json) | Full variable library export: Global primitives, Alias semantic layer (5 theme modes), Mapped component layer. Aliases preserved as `{Collection::token}` references |
+| [`tokens.css`](https://kiva-design-system.github.io/kiva-design-system-2026/tokens.css) | The same tokens as CSS custom properties; themes via `[data-theme]`, button variants via `[data-button-variant]` |
+
+`tokens.css` and the token tables in `llms-full.txt` are generated from `tokens.json` by `build-endpoints.py` — edit `tokens.json` (or re-export from Figma), run the script, commit all four.
 
 ## Live reference
 
