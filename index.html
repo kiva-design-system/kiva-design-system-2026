@@ -1696,7 +1696,7 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
           <div class="border-style-demo">
             <div class="shape" style="border:2px solid #223829;"></div>
           </div>
-          <div class="style-rule"><strong>All filled content.</strong> Default for buttons, cards, inputs, dropdowns, tables. Width changes with state: 1px rest · 1.2px hover/active · 2px selected.</div>
+          <div class="style-rule"><strong>All filled content.</strong> Default for buttons, cards, inputs, dropdowns, tables. Width changes with state: 1px rest · 1.2px hover/active · 2px selected. <strong>⚠ Pending reconciliation:</strong> the live variable library currently resolves solid/hover and solid/active to 1px (border/width/100) — either the library gains a 1.2px primitive or this spec settles on 1px.</div>
         </div>
         <div class="border-style-card">
           <div class="style-name">Dashed</div>
@@ -1836,14 +1836,13 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
 
     <div class="panel-tools">
       <button class="panel-tool primary" onclick="copyPrompt('buttons')">↗ Copy as prompt</button>
-      <span class="panel-tool-hint">4 sub-tabs: All variants · Primary · Secondary · Playground (live sliders)</span>
+      <span class="panel-tool-hint">3 sub-tabs: All variants · Primary · Secondary</span>
     </div>
 
     <div class="sub-nav">
       <button class="sub-btn on" onclick="showSub('ball',this,'buttons')">All variants</button>
       <button class="sub-btn" onclick="showSub('bp',this,'buttons')">Primary</button>
       <button class="sub-btn" onclick="showSub('bs',this,'buttons')">Secondary</button>
-      <button class="sub-btn" onclick="showSub('bpg',this,'buttons')">Playground</button>
     </div>
 
     <!-- All variants -->
@@ -1928,56 +1927,9 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
         </tbody>
       </table>
 
-      <p class="note">Radius is <strong>size-driven</strong>: 16px for the default size, 8px (<span class="tw">tw-rounded-sm</span>) for the small size — it does not change with breakpoint. Secondary border stroke weight per the current variable library: 1px default · 1px hover · 1px active (<code>Alias - Border solid/default · solid/hover · solid/active</code>, all → <code>border/width/100</code>); emphasis contexts use 2px (<code>solid/emphasis</code>). See the <a href="#border/bss" style="color:#276A43;">Border → States</a> tab.</p>
+      <p class="note">Radius is <strong>size-driven</strong>: 16px for the default size, 8px (<span class="tw">tw-rounded-sm</span>) for the small size — it does not change with breakpoint. Secondary border stroke weight: the border spec targets 1px default · 1.2px hover/active, but the live variable library currently resolves all three to 1px (<code>border/width/100</code>) — pending reconciliation; emphasis contexts use 2px (<code>solid/emphasis</code>). See the <a href="#border/bss" style="color:#276A43;">Border → States</a> tab.</p>
     </div>
 
-    <!-- Playground -->
-    <div id="bpg" class="sub-panel">
-      <div class="info">Tune the button live. Adjust each token, see it render against light / dark / cream stages, then copy either a prototype-only CSS snapshot or a production-safe design token recipe. Defaults match the Primary spec.</div>
-      <div class="bpg-wrap">
-        <div>
-          <div class="bpg-bg-tabs" style="margin-bottom:10px;">
-            <button class="on" data-bg="light" onclick="bpg_setBg(this,'light')">Light bg</button>
-            <button data-bg="dark" onclick="bpg_setBg(this,'dark')">Dark bg</button>
-            <button data-bg="cream" onclick="bpg_setBg(this,'cream')">Cream bg</button>
-          </div>
-          <div class="bpg-stage" id="bpg-stage" data-bg="light">
-            <button id="bpg-btn">Lend now</button>
-          </div>
-          <div class="bpg-out" id="bpg-out"></div>
-        </div>
-
-        <div class="bpg-controls">
-          <div class="bpg-group">
-            <div class="grp-label">Size &amp; Shape</div>
-            <div class="bpg-slider"><span>Height</span><input type="range" id="bpg-h" min="28" max="72" step="1" value="48"><span class="v"><span id="v-h">48</span>px</span></div>
-            <div class="bpg-slider"><span>Padding-X</span><input type="range" id="bpg-px" min="6" max="40" step="1" value="14"><span class="v"><span id="v-px">14</span>px</span></div>
-            <div class="bpg-slider"><span>Radius</span><input type="range" id="bpg-r" min="0" max="36" step="1" value="16"><span class="v"><span id="v-r">16</span>px</span></div>
-            <div class="bpg-slider"><span>Border</span><input type="range" id="bpg-bw" min="0" max="3" step="0.2" value="0"><span class="v"><span id="v-bw">0</span>px</span></div>
-          </div>
-
-          <div class="bpg-group">
-            <div class="grp-label">Typography</div>
-            <div class="bpg-slider"><span>Font size</span><input type="range" id="bpg-fs" min="10" max="22" step="1" value="16"><span class="v"><span id="v-fs">16</span>px</span></div>
-            <div class="bpg-slider"><span>Weight</span><input type="range" id="bpg-fw" min="300" max="700" step="100" value="500"><span class="v" id="v-fw">500</span></div>
-            <div class="bpg-slider"><span>Tracking</span><input type="range" id="bpg-ls" min="-1" max="2" step="0.05" value="0"><span class="v"><span id="v-ls">0</span>px</span></div>
-          </div>
-
-          <div class="bpg-group">
-            <div class="grp-label">Color</div>
-            <div class="bpg-color"><span>Background</span><input type="color" id="bpg-bg" value="#276A43"><input type="text" id="bpg-bg-hex" value="#276A43" maxlength="7"></div>
-            <div class="bpg-color"><span>Text</span><input type="color" id="bpg-fg" value="#EDF4F1"><input type="text" id="bpg-fg-hex" value="#EDF4F1" maxlength="7"></div>
-            <div class="bpg-color"><span>Border</span><input type="color" id="bpg-bc" value="#276A43"><input type="text" id="bpg-bc-hex" value="#276A43" maxlength="7"></div>
-          </div>
-
-          <div class="bpg-export">
-            <button onclick="bpg_copy('css')">Prototype CSS only</button>
-            <button class="alt" onclick="bpg_copy('tw')">Design token recipe</button>
-            <button class="alt" onclick="bpg_reset()" title="Reset to Primary default">↺</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -2079,9 +2031,9 @@ const KV_COMPONENTS = [
  metrics:['Nav heights 80 (desktop/tablet) · 64 (mobile) · links nav/text/link/* → text/button (Medium 16/21)','Dropdown radius — nav/dropdown/radius → radius/200 (8px)','Footer text — headings/links text/label · body text/caption · padding 64, gaps 48–8 on the scale','Breakpoint modes pinned per variant: XL→desktop(xl) · L→desktop(lg) · M→tablet(md) · SM→mobile(sm)'],
  a11y:['<nav> and <footer> landmarks + skip-to-content link','Menus: Enter opens, Esc closes; logical tab order','Basket count announced via aria-label; aria-current for current page']},
 {id:'kvc-avatar', name:'Avatar & Icons', desc:'KvUserAvatar identifies people in three modes. Material icons are deliberately token-free: 24px, fill-current, always inheriting the parent text color.',
- demo:'<div style="width:48px;height:48px;border-radius:50%;background:#2aa967;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px;">k</div><div style="width:48px;height:48px;border-radius:50%;background:#276a43;display:flex;align-items:center;justify-content:center;color:#edf4f1;font-size:18px;font-weight:500;">A</div><div style="width:48px;height:48px;border-radius:50%;background:#e0e0e0;display:flex;align-items:center;justify-content:center;color:#9e9e9e;font-size:22px;">☻</div>',
+ demo:'<div style="text-align:center;"><div style="width:48px;height:48px;border-radius:50%;background:#2aa967;display:flex;align-items:center;justify-content:center;"><svg width="20" height="29" viewBox="0 0 25 37" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M8.22861 0.875H0.857178V36.3125H8.22861V0.875Z"/><path d="M10.1143 23.2751C21.9428 23.2751 24.6857 13.2126 24.6857 11.4626H23.6571C11.8286 11.4626 9.08569 21.5251 9.08569 23.2751H10.1143Z"/><path d="M9.08569 24.2376C9.08569 26.0751 11.1428 36.3126 23.8285 36.3126H24.8571C24.8571 34.4751 22.8 24.2376 10.1143 24.2376H9.08569Z"/></svg></div><div style="font-size:11px;color:#757575;margin-top:6px;">Anonymous</div></div><div style="text-align:center;"><div style="width:48px;height:48px;border-radius:50%;background:#276a43;display:flex;align-items:center;justify-content:center;color:#edf4f1;font-size:18px;font-weight:500;">A</div><div style="font-size:11px;color:#757575;margin-top:6px;">Letter</div></div><div style="text-align:center;"><div style="width:48px;height:48px;border-radius:50%;background:#c4c4c4;overflow:hidden;position:relative;"><div style="position:absolute;inset:0;width:45%;background:linear-gradient(90deg,transparent,#edf4f1,transparent);animation:kvc-shimmer 1.5s cubic-bezier(.4,0,.2,1) infinite;"></div></div><div style="font-size:11px;color:#757575;margin-top:6px;">Image · loading</div></div>',
  tokens:[['avatar background','avatar/color/background','color/brand/default','#2aa967']],
- metrics:['Radius — avatar/radius → radius/max (full circle) · base 48px, scales 24–64 with context','Anonymous = brand circle + white Kiva K (60% height) · Letter = background/action + initial · Image = photo clip','KvMaterialIcon: 24px, fill-current — no color tokens by design; letter-avatar random combos not tokenized'],
+ metrics:['Radius — avatar/radius → radius/max (full circle) · base 48px, scales 24–64 with context','Anonymous = brand circle + the white Kiva K mark (60% height) · Letter = background/action + initial · Image = the lender photo clipped to the circle; while it loads, the circle runs KvLoadingPlaceholder (base + shimmer) — there is no gray person-glyph empty state in the system','KvMaterialIcon: 24px, fill-current — no color tokens by design; letter-avatar random combos not tokenized'],
  a11y:['Photos: alt "Image of lender"','Anonymous/letter marks are decorative (aria-hidden)','Wrap in a ≥48px target when clickable']}
 ];
 
@@ -2512,6 +2464,7 @@ function bpg_reset(){
   toast('Reset to Primary default');
 }
 function bindBPG(){
+  if(!document.getElementById('bpg-h')) return; // playground removed from canonical reference
   ['bpg-h','bpg-px','bpg-r','bpg-bw','bpg-fs','bpg-fw','bpg-ls'].forEach(id => {
     document.getElementById(id).addEventListener('input', bpg_render);
   });
@@ -2796,7 +2749,7 @@ function copyPrompt(panelKey){
     body += 'STYLE DISCIPLINE:\n';
     body += '- Solid: all filled content (default for buttons, cards, inputs, dropdowns).\n';
     body += '- Dashed: reserved EXCLUSIVELY for empty/unearned states.\n\n';
-    body += 'STATE PROGRESSION: 1px rest → 1.2px hover/active → 2px selected (monotonic — heavier weight always means more user attention).\n\n';
+    body += 'STATE PROGRESSION (spec): 1px rest -> 1.2px hover/active -> 2px selected (heavier weight means more user attention). CAVEAT: the live variable library currently resolves solid/hover and solid/active to 1px; treat 1.2px as pending reconciliation.\n\n';
     body += 'FOCUS USES OUTLINE, NOT BORDER-WIDTH. Keyboard focus renders as outline: var(--focus-ring) solid 2px with a glow halo, layered on top via outline (does not consume border slot or change box size).\n\n';
     body += 'COMPONENT MAPPING:\n';
     body += '- Text field: --border-default → hover → active\n';
@@ -2817,28 +2770,22 @@ function copyPrompt(panelKey){
     body += '- Don\'t reuse --border-* tokens for focus rings.\n';
   } else if(panelKey === 'buttons'){
     body = 'Kiva 2026 Design System — Buttons\n\n';
-    body += '2 button types. Both use Kiva Post Grotesk Medium 500, 16px, line-height 21px, tracking 0 (tw-text-button-link + tw-font-medium).\n\n';
-    body += 'PRIMARY:\n';
-    body += '- background: default #276A43 · hover #223829 · active #223829 · disabled #276A43 @30%\n';
-    body += '- text color: #EDF4F1 (all states)\n';
-    body += '- border: none (0px all states)\n';
-    body += '- radius: 16px LG/MD (tw-rounded), 8px SM (tw-rounded-sm)\n';
-    body += '- inset: 14px vertical padding LG/MD, 8px SM\n\n';
-    body += 'SECONDARY:\n';
-    body += '- background: default #FFFFFF · hover #EDF4F1 · active #EDF4F1 · disabled #FFFFFF\n';
-    body += '- text color: #212121 (active states), #212121 @30% (disabled)\n';
-    body += '- border color: #212121 (active states), #212121 @30% (disabled)\n';
-    body += '- border stroke weight: 1px default · 1.2px hover · 1.2px active · 1px loading\n';
-    body += '- radius: 16px LG/MD, 8px SM (same as primary)\n';
-    body += '- inset: 14px vertical padding LG/MD, 8px SM\n';
-    body += '- loading state: bg #FFFFFF · border 1px · text #212121\n\n';
-    body += 'CANONICAL HEIGHT: 48px (LG/MD), 36px (SM breakpoint).\n\n';
+    body += '6 variants (the Mapped - Buttons variable mode): primary, secondary, danger, link, ghost, caution.\n';
+    body += '2 sizes: default = fixed 48px height, 24x8 padding, radius 16 (tw-rounded), label KPG Medium 16/21 (tw-text-button-link). small = fixed 32px, 16x4 padding, radius 8 (tw-rounded-sm), label KPG Medium 14/18 (tw-text-label). Sizing is size-driven, not breakpoint-driven.\n';
+    body += '5 states: default, hover, active, disabled, loading.\n\n';
+    body += 'PER-VARIANT TOKENS (default theme; always bind the token, never the hex):\n';
+    body += '- primary: bg background/action #276A43 -> hover/active background/action-highlight #223829; text text/primary-inverse #EDF4F1; no border.\n';
+    body += '- secondary: bg background/action-secondary #FFFFFF -> hover background/action-secondary-highlight #EDF4F1; text+border text/secondary-button + border/secondary-button #212121 (1px, the only bordered variant).\n';
+    body += '- danger: bg background/danger #E0988D -> hover background/danger-highlight #F9F0EF; text text/danger #5C2A22.\n';
+    body += '- link: bg background/primary-inverse #223829 -> hover background/action #276A43; text text/primary-inverse #EDF4F1.\n';
+    body += '- ghost: bg background/primary #FFFFFF -> hover background/secondary #EDF4F1; text text/primary #223829; transparent border.\n';
+    body += '- caution: bg background/caution #F8CD69 -> hover background/caution-highlight #F8F2E6; text text/caution #593207.\n\n';
+    body += 'DISABLED: disabled tokens + 40% whole-button opacity (code: tw-opacity-low). LOADING: keep default bg, hide label, spinner arc = button/color/spinner (white on primary/danger/link, black on secondary/caution, brand #2AA967 on ghost); track = text/tertiary @30%.\n\n';
     body += 'RULES:\n';
-    body += '- Primary = main CTA per view. Use for high-emphasis "go forward" actions.\n';
-    body += '- Secondary = supporting action. Pair with primary; lower visual weight.\n';
-    body += '- Use tw-text-button-link for current shipped code. Treat any future shorter alias as valid only after it ships.\n';
-    body += '- Production recipes should use semantic utilities such as tw-bg-action, tw-text-primary-inverse, tw-rounded, and tw-border-secondary-button. Prototype CSS snapshots are not production-ready.\n';
-    body += '- For Secondary border weight detail, see the Border panel.\n';
+    body += '- One primary action per view; secondary accompanies a primary.\n';
+    body += '- danger for destructive, caution for needs-attention, link for navigation-as-button, ghost for lowest emphasis.\n';
+    body += '- Production recipes use semantic utilities (tw-bg-action, tw-text-primary-inverse, tw-rounded); never raw hex.\n';
+    body += '- Full token tables: https://kiva-design-system.github.io/kiva-design-system-2026/tokens.json';
   }
   copyText(body, 'Copied prompt for ' + panelKey);
 }
