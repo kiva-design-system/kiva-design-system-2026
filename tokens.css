@@ -199,10 +199,10 @@
   --checkbox-color-label: var(--text-primary);
   --checkbox-radius: 4px;
   /* Mapped - Tooltip / Chips / Pills */
-  --tooltip-color-background-dark: #212121;
+  --tooltip-color-background-dark: #454545;
   --tooltip-color-background-light: #ffffff;
   --tooltip-color-text-on-dark: #ffffff;
-  --tooltip-color-text-on-light: #212121;
+  --tooltip-color-text-on-light: #454545;
   --tooltip-radius: 16px;
   --tooltip-inset: 20px;
   --chip-color-background-default: var(--background-secondary);

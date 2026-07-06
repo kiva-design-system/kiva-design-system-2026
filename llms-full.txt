@@ -26,7 +26,7 @@ Generated 2026-07-04 from the Figma variable library (Ecosystem 2026 WIP, file T
 - Always render a visible label (never placeholder-as-label) and pair error color with an error message.
 
 ### Tooltip (KvTooltip)
-- THEME-INDEPENDENT by design: exactly two fixed neutral styles, identical across all themes. Dark chip (background #212121 gray/800, text #ffffff) for light surfaces; light chip (background #ffffff, text #212121) for dark or photographic surfaces. Contrast 16.1:1 (AAA at any size). Darkest gray instead of pure black to avoid halation on small text.
+- THEME-INDEPENDENT by design: exactly two fixed neutral styles, identical across all themes. Dark chip (background #454545 gray/700, text #ffffff) for light surfaces; light chip (background #ffffff, text #454545 gray/700) for dark or photographic surfaces. Contrast 9.6:1 (AAA at any size). Deep gray instead of pure black to avoid halation on small text.
 - Geometry: radius 16, inset 20, max-width 250, 8px arrow matching the container fill, shadow 0 4 12 shadow/default. Placements: top / bottom / left / right.
 - Not interactive content; shows on hover and focus, dismisses on Esc/blur; role="tooltip" + aria-describedby.
 
@@ -449,10 +449,10 @@ Generated 2026-07-04 from the Figma variable library (Ecosystem 2026 WIP, file T
 
 | token | value | resolves to |
 |---|---|---|
-| `tooltip/color/background/dark` | {Global::color/gray/800} | #212121 |
+| `tooltip/color/background/dark` | {Global::color/gray/700} | #454545 |
 | `tooltip/color/background/light` | {Global::color/neutral/white} | #ffffff |
 | `tooltip/color/text/on-dark` | {Global::color/neutral/white} | #ffffff |
-| `tooltip/color/text/on-light` | {Global::color/gray/800} | #212121 |
+| `tooltip/color/text/on-light` | {Global::color/gray/700} | #454545 |
 | `tooltip/radius` | {Global::radius/400} | 16 |
 | `tooltip/inset` | {Global::spacing/scale/2-5} | 20 |
 | `chip/color/background/default` | {Alias - Color::background/secondary} | #edf4f1 |

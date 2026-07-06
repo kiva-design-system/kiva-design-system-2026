@@ -1643,19 +1643,19 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
           <tr>
             <td><span class="tok">solid/hover</span></td>
             <td><span class="mono">--border-hover</span></td>
-            <td class="mv">1.2px</td>
+            <td class="mv">1px</td>
             <td class="mv">—</td>
             <td class="mv">—</td>
-            <td><span class="border-preview-cell" style="border:1.2px solid #223829;"></span></td>
+            <td><span class="border-preview-cell" style="border:1px solid #223829;"></span></td>
             <td>Hover state on any bordered interactive element</td>
           </tr>
           <tr>
             <td><span class="tok">solid/active</span></td>
             <td><span class="mono">--border-active</span></td>
-            <td class="mv">1.2px</td>
+            <td class="mv">1px</td>
             <td class="mv">—</td>
             <td class="mv">—</td>
-            <td><span class="border-preview-cell" style="border:1.2px solid #223829;"></span></td>
+            <td><span class="border-preview-cell" style="border:1px solid #223829;"></span></td>
             <td>Pressed / active state on bordered elements</td>
           </tr>
           <tr>
@@ -1696,7 +1696,7 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
           <div class="border-style-demo">
             <div class="shape" style="border:2px solid #223829;"></div>
           </div>
-          <div class="style-rule"><strong>All filled content.</strong> Default for buttons, cards, inputs, dropdowns, tables. Width changes with state: 1px rest · 1.2px hover/active · 2px selected. <strong>⚠ Pending reconciliation:</strong> the live variable library currently resolves solid/hover and solid/active to 1px (border/width/100) — either the library gains a 1.2px primitive or this spec settles on 1px.</div>
+          <div class="style-rule"><strong>All filled content.</strong> Default for buttons, cards, inputs, dropdowns, tables. Width by state: 1px rest / hover / active (state change is communicated by border color, not weight) · 2px selected / emphasis. The 1.2px intermediate step is retired.</div>
         </div>
         <div class="border-style-card">
           <div class="style-name">Dashed</div>
@@ -1712,7 +1712,7 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
     <!-- States -->
     <div id="bss" class="sub-panel">
       <div class="info">
-        <strong>Border weight communicates state.</strong> 1px = resting · 1.2px = hover/active · 2px = selected. The progression is monotonic — heavier weight always means more attention from the user, never less.
+        <strong>Border weight communicates commitment.</strong> 1px = resting, hover and active (those states shift border color, not weight) · 2px = selected / emphasis. Heavier weight always means more commitment, never less. The former 1.2px hover step is retired.
       </div>
 
       <div class="border-state-grid">
@@ -1723,16 +1723,16 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
           <div class="border-state-meta">1px solid<br>Default resting state</div>
         </div>
         <div class="border-state-card">
-          <div class="border-state-demo"><div class="shape" style="border:1.2px solid #223829;"></div></div>
+          <div class="border-state-demo"><div class="shape" style="border:1px solid #223829;"></div></div>
           <div class="border-state-name">Hover</div>
           <div class="border-state-var">--border-hover</div>
-          <div class="border-state-meta">1.2px solid<br>Cursor on element</div>
+          <div class="border-state-meta">1px solid<br>Cursor on element</div>
         </div>
         <div class="border-state-card">
-          <div class="border-state-demo"><div class="shape" style="border:1.2px solid #223829;"></div></div>
+          <div class="border-state-demo"><div class="shape" style="border:1px solid #223829;"></div></div>
           <div class="border-state-name">Active</div>
           <div class="border-state-var">--border-active</div>
-          <div class="border-state-meta">1.2px solid<br>Pressed / clicked</div>
+          <div class="border-state-meta">1px solid<br>Pressed / clicked</div>
         </div>
         <div class="border-state-card">
           <div class="border-state-demo"><div class="shape" style="border:2px solid #223829;"></div></div>
@@ -1757,7 +1757,7 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
       <div class="border-component-list">
         <div class="border-component-row"><span class="comp">Text field</span><span class="tok-mini">--border-default → hover → active</span></div>
         <div class="border-component-row"><span class="comp">Dropdown (closed)</span><span class="tok-mini">--border-default</span></div>
-        <div class="border-component-row"><span class="comp">Dropdown (open)</span><span class="tok-mini">--border-active (1.2px)</span></div>
+        <div class="border-component-row"><span class="comp">Dropdown (open)</span><span class="tok-mini">--border-active (1px)</span></div>
         <div class="border-component-row"><span class="comp">Error input</span><span class="tok-mini">--border-selected (2px, color/danger)</span></div>
         <div class="border-component-row"><span class="comp">Disabled input</span><span class="tok-mini">--border-secondary-disabled</span></div>
         <div class="border-component-row"><span class="comp">Search bar</span><span class="tok-mini">--border-default → hover</span></div>
@@ -1794,7 +1794,7 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
         </div>
         <div class="rule-card rule-do">
           <div class="rule-title">Border weight communicates state</div>
-          <div class="rule-desc">1px = resting · 1.2px = hover/active · 2px = selected. The progression is monotonic — heavier always means more attention.</div>
+          <div class="rule-desc">1px = resting/hover/active (color signals the state) · 2px = selected/emphasis. Heavier always means more commitment. The former 1.2px step is retired.</div>
         </div>
         <div class="rule-card rule-do">
           <div class="rule-title">Solid for filled content · dashed for empty</div>
@@ -1899,11 +1899,11 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
         </div>
         <div>
           <div class="btn-state-label">Hover</div>
-          <div class="btn-preview" style="padding:0 14px;height:48px;background:#EDF4F1;border-radius:16px;color:#212121;border:1.2px solid #212121;">Share</div>
+          <div class="btn-preview" style="padding:0 14px;height:48px;background:#EDF4F1;border-radius:16px;color:#212121;border:1px solid #212121;">Share</div>
         </div>
         <div>
           <div class="btn-state-label">Active</div>
-          <div class="btn-preview" style="padding:0 14px;height:48px;background:#EDF4F1;border-radius:16px;color:#212121;border:1.2px solid #212121;">Share</div>
+          <div class="btn-preview" style="padding:0 14px;height:48px;background:#EDF4F1;border-radius:16px;color:#212121;border:1px solid #212121;">Share</div>
         </div>
         <div>
           <div class="btn-state-label">Disabled</div>
@@ -1917,7 +1917,7 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
           <tr><td class="tok">background</td><td class="mono">#FFFFFF</td><td class="mono">#EDF4F1</td><td class="mono">#EDF4F1</td><td class="mono">#FFFFFF</td></tr>
           <tr><td class="tok">text color</td><td colspan="3" class="mono">#212121 — all active states</td><td class="mono">#212121 @30%</td></tr>
           <tr><td class="tok">border color</td><td colspan="3" class="mono">#212121 — all active states</td><td class="mono">#212121 @30%</td></tr>
-          <tr><td class="tok">border stroke weight</td><td class="mono">1px</td><td class="mono">1.2px</td><td class="mono">1.2px</td><td class="mono">1px</td></tr>
+          <tr><td class="tok">border stroke weight</td><td class="mono">1px</td><td class="mono">1px</td><td class="mono">1px</td><td class="mono">1px</td></tr>
           <tr><td class="tok">loading state</td><td colspan="4" class="mono">bg: #FFFFFF · border stroke: 1px · text: #212121</td></tr>
           <tr><td class="tok">radius LG / MD</td><td colspan="4" class="mono">16px → <span class="tw">tw-rounded</span></td></tr>
           <tr><td class="tok">radius SM</td><td colspan="4" class="mono">8px → <span class="tw">tw-rounded-sm</span></td></tr>
@@ -1927,7 +1927,7 @@ mark.s-hit{background:#F8CD69;color:#593207;border-radius:2px;padding:0 2px;}
         </tbody>
       </table>
 
-      <p class="note">Radius is <strong>size-driven</strong>: 16px for the default size, 8px (<span class="tw">tw-rounded-sm</span>) for the small size — it does not change with breakpoint. Secondary border stroke weight: the border spec targets 1px default · 1.2px hover/active, but the live variable library currently resolves all three to 1px (<code>border/width/100</code>) — pending reconciliation; emphasis contexts use 2px (<code>solid/emphasis</code>). See the <a href="#border/bss" style="color:#276A43;">Border → States</a> tab.</p>
+      <p class="note">Radius is <strong>size-driven</strong>: 16px for the default size, 8px (<span class="tw">tw-rounded-sm</span>) for the small size — it does not change with breakpoint. Secondary border stroke weight: 1px in every state (<code>solid/default · solid/hover · solid/active</code> → <code>border/width/100</code>); hover/active are signalled by background and border color. Emphasis contexts use 2px (<code>solid/emphasis</code>). See the <a href="#border/bss" style="color:#276A43;">Border → States</a> tab.</p>
     </div>
 
   </div>
@@ -2000,9 +2000,9 @@ const KV_COMPONENTS = [
  tokens:[['input background','input/color/background/default','background/primary','#ffffff'],['input background · error','input/color/background/danger','background/danger-highlight','#f9f0ef'],['input background · disabled','input/color/background/disabled','background/tertiary','#c4c4c4'],['input border','input/color/border/default','border/tertiary','#c4c4c4'],['input border · focus','input/color/border/focus','border/action','#276a43'],['input border · error','input/color/border/danger','border/danger','#e0988d'],['input text','input/color/text/default','text/primary','#223829'],['input text · error','input/color/text/danger','text/danger','#5c2a22'],['input icon','input/color/icon','text/secondary','#505050'],['checkbox unchecked','checkbox/color/background/unchecked','background/primary','#ffffff'],['checkbox checked','checkbox/color/background/checked','background/action','#276a43'],['checkbox disabled','checkbox/color/background/disabled','color/gray/200','#e0e0e0'],['checkbox border','checkbox/color/border/default','border/secondary','#757575'],['checkbox border · checked','checkbox/color/border/checked','border/action','#276a43'],['checkbox checkmark','checkbox/color/checkmark','text/primary-inverse','#edf4f1'],['checkbox label','checkbox/color/label','text/primary','#223829']],
  metrics:['Radius — input/radius · checkbox/radius → radius/100 (4px)','Input height fixed 48px · horizontal inset 16px · leading icon 24px','Text — input/text/* → text/base (KPG Book 16 / 22)','Focus ring 2px → Alias-Border solid/emphasis'],
  a11y:['Label always linked (for/id); never placeholder-as-label','Errors: aria-invalid + aria-describedby + visible message','Checkbox hit area = full label row; toggles with Space']},
-{id:'kvc-tooltip', name:'Tooltip', desc:'Theme-independent by design: two fixed neutral styles that look identical across themed sections. Dark chip for light surfaces, light chip for dark surfaces. Darkest gray over pure black avoids halation on small copy. Contrast 16.1:1 — AAA at any size.',
- demo:'<div style="background:#212121;color:#fff;border-radius:16px;padding:16px 20px;max-width:220px;font-size:14px;line-height:1.4;position:relative;">Dark chip — for light surfaces<div style="position:absolute;left:calc(50% - 8px);bottom:-8px;border:8px solid transparent;border-top-color:#212121;border-bottom:none;"></div></div><div style="background:#223829;padding:24px;border-radius:12px;"><div style="background:#fff;color:#212121;border-radius:16px;padding:16px 20px;max-width:220px;font-size:14px;line-height:1.4;position:relative;box-shadow:0 4px 12px rgba(0,0,0,.08);">Light chip — for dark surfaces<div style="position:absolute;left:calc(50% - 8px);bottom:-8px;border:8px solid transparent;border-top-color:#fff;border-bottom:none;"></div></div></div>',
- tokens:[['background · dark chip','tooltip/color/background/dark','color/gray/800','#212121'],['background · light chip','tooltip/color/background/light','color/neutral/white','#ffffff'],['text · on dark','tooltip/color/text/on-dark','color/neutral/white','#ffffff'],['text · on light','tooltip/color/text/on-light','color/gray/800','#212121']],
+{id:'kvc-tooltip', name:'Tooltip', desc:'Theme-independent by design: two fixed neutral styles that look identical across themed sections. Dark chip for light surfaces, light chip for dark surfaces. Deep gray (gray/700) rather than pure black avoids halation on small copy. Contrast 9.6:1 — AAA at any size.',
+ demo:'<div style="background:#454545;color:#fff;border-radius:16px;padding:16px 20px;max-width:220px;font-size:14px;line-height:1.4;position:relative;">Dark chip — for light surfaces<div style="position:absolute;left:calc(50% - 8px);bottom:-8px;border:8px solid transparent;border-top-color:#454545;border-bottom:none;"></div></div><div style="background:#223829;padding:24px;border-radius:12px;"><div style="background:#fff;color:#454545;border-radius:16px;padding:16px 20px;max-width:220px;font-size:14px;line-height:1.4;position:relative;box-shadow:0 4px 12px rgba(0,0,0,.08);">Light chip — for dark surfaces<div style="position:absolute;left:calc(50% - 8px);bottom:-8px;border:8px solid transparent;border-top-color:#fff;border-bottom:none;"></div></div></div>',
+ tokens:[['background · dark chip','tooltip/color/background/dark','color/gray/700','#454545'],['background · light chip','tooltip/color/background/light','color/neutral/white','#ffffff'],['text · on dark','tooltip/color/text/on-dark','color/neutral/white','#ffffff'],['text · on light','tooltip/color/text/on-light','color/gray/700','#454545']],
  metrics:['Radius — tooltip/radius → radius/400 (16px)','Inset — tooltip/inset → spacing/scale/2-5 (20px) · max-width 250px','Arrow 16×8, same fill as container · shadow 0 4 12 shadow/default','Placements: top / bottom / left / right'],
  a11y:['role="tooltip" + aria-describedby; no interactive content inside','Shows on hover AND focus; dismisses on Esc and blur','Tokens bypass the theme system on purpose — do not theme tooltips']},
 {id:'kvc-chips', name:'Chips & Pills', desc:'Chips are dismissible selections (filters, applied tags) — real buttons with a close icon. Pills are static, read-only status labels. Use buttons for actions, pills for status.',
@@ -2742,18 +2742,18 @@ function copyPrompt(panelKey){
     body += '5 stroke-weight tokens. Common alternative names: Stroke · Outline · Border width.\n\n';
     body += 'CANONICAL TOKENS (style/state · width · dash · gap · CSS variable · use case):\n';
     body += '- solid/default → 1px · — · — · --border-default → Form inputs, dropdowns, cards, secondary buttons (resting)\n';
-    body += '- solid/hover → 1.2px · — · — · --border-hover → Hover state on any bordered interactive element\n';
-    body += '- solid/active → 1.2px · — · — · --border-active → Pressed/active state on bordered elements\n';
+    body += '- solid/hover → 1px · — · — · --border-hover → Hover state on any bordered interactive element (color changes, weight does not)\n';
+    body += '- solid/active → 1px · — · — · --border-active → Pressed/active state on bordered elements (color changes, weight does not)\n';
     body += '- solid/selected → 2px · — · — · --border-selected → Selected cards, error inputs (visual selection)\n';
     body += '- dashed/dashed → 2px · 4px · 2px · --border-dashed → Empty-state placeholders, upload zones, unearned badges\n\n';
     body += 'STYLE DISCIPLINE:\n';
     body += '- Solid: all filled content (default for buttons, cards, inputs, dropdowns).\n';
     body += '- Dashed: reserved EXCLUSIVELY for empty/unearned states.\n\n';
-    body += 'STATE PROGRESSION (spec): 1px rest -> 1.2px hover/active -> 2px selected (heavier weight means more user attention). CAVEAT: the live variable library currently resolves solid/hover and solid/active to 1px; treat 1.2px as pending reconciliation.\n\n';
+    body += 'STATE PROGRESSION: 1px rest/hover/active (state changes are signalled by border color) -> 2px selected/emphasis. The former 1.2px hover step is retired.\n\n';
     body += 'FOCUS USES OUTLINE, NOT BORDER-WIDTH. Keyboard focus renders as outline: var(--focus-ring) solid 2px with a glow halo, layered on top via outline (does not consume border slot or change box size).\n\n';
     body += 'COMPONENT MAPPING:\n';
     body += '- Text field: --border-default → hover → active\n';
-    body += '- Dropdown closed: --border-default. Open: --border-active (1.2px)\n';
+    body += '- Dropdown closed: --border-default. Open: --border-active (1px)\n';
     body += '- Error input: --border-selected (2px, color/danger)\n';
     body += '- Disabled input: --border-secondary-disabled\n';
     body += '- Primary button: 0px (filled, no border)\n';
@@ -2909,8 +2909,8 @@ function renderExport(){
     };
     payload.border = {
       'solid/default':  { width:'1px' },
-      'solid/hover':    { width:'1.2px' },
-      'solid/active':   { width:'1.2px' },
+      'solid/hover':    { width:'1px' },
+      'solid/active':   { width:'1px' },
       'solid/selected': { width:'2px' },
       'dashed':         { width:'2px', dash:'4px', gap:'2px' },
     };
