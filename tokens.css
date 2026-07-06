@@ -202,7 +202,7 @@
   --tooltip-color-background-dark: #454545;
   --tooltip-color-background-light: #ffffff;
   --tooltip-color-text-on-dark: #ffffff;
-  --tooltip-color-text-on-light: #454545;
+  --tooltip-color-text-on-light: #212121;
   --tooltip-radius: 16px;
   --tooltip-inset: 20px;
   --chip-color-background-default: var(--background-secondary);
